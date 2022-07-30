@@ -7,8 +7,13 @@
     <title>Document</title>
 </head>
 <body>
+<form action="{{url('/message')}}" method="POST">
+    @csrf
+    
     <input type="text" name="title" placeholder="title"><br><br>
     <input type="text" name="description" placeholder="description"><br><br>
     <input type="file" name="file" placeholder="file"><br><br>
+    <input type="submit" value="yuborish">
+</form>
 </body>
 </html>
