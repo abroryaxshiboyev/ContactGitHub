@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $validated=$request->validated();
         User::create($validated);
-        return 'a';
+        return view('index');
     }
 
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
     {
             $user=User::where('email',$R['email'])->where('password',$R['password'])->get();
         if(isset($user[0]['password'])){
-            return view('index',['user_id'=>$user[0]['id']]);
+            return view('index');
         }else{
             return view('register',['status'=>'login yoki parol notogri']);
         }

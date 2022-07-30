@@ -37,17 +37,18 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        return $request;
         $fileName=time().".".$request->file->getClientOriginalExtension();
         $request->file->move(public_path('/files'),$fileName);
 
         Message::create([
             'title' => $request->title,
             'description'=>$request->description,
+            'name'=>$request->name,
+            'email'=>$request->email,
             'file'=>'files/'.$fileName,
             'user_id'=>$request->user_id,
         ]);
-        return view('register');
+        return view('index',['message'=>'xabar yuborildi']);
     }
 
     /**
