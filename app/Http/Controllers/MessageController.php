@@ -42,10 +42,10 @@ class MessageController extends Controller
         $request->file->move(public_path('/files'),$fileName);
 
         Message::create([
-            'name' => $request->name,
-            'day'=>$request->day,
-            'img'=>'images/'.$fileName,
-            'price'=>$request->price,
+            'title' => $request->title,
+            'description'=>$request->description,
+            'file'=>'files/'.$fileName,
+            'user_id'=>$request->user_id,
         ]);
         return view('register');
     }

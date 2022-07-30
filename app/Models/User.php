@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'id'
-];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
