@@ -1,11 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
-use App\Models\Message;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use phpDocumentor\Reflection\Types\Resource_;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +20,4 @@ return view('register');
 });
 Route::resource('message',MessageController::class);
 Route::resource('user',UserController::class);
+Route::resource('admins', AdminController::class);
