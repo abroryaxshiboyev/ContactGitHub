@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use GuzzleHttp\Psr7\Request;
+use Whoops\Run;
 
 class MessageController extends Controller
 {
@@ -25,7 +27,6 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -36,7 +37,17 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
-        //
+        return $request;
+        $fileName=time().".".$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('/files'),$fileName);
+
+        Message::create([
+            'name' => $request->name,
+            'day'=>$request->day,
+            'img'=>'images/'.$fileName,
+            'price'=>$request->price,
+        ]);
+        return view('register');
     }
 
     /**

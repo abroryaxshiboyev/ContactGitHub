@@ -36,7 +36,9 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        //
+        $validated=$request->validated();
+        User::create($validated);
+        return 'a';
     }
 
     /**
@@ -45,9 +47,14 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($email,UpdateUserRequest $R)
     {
-        //
+            $user=User::where('email',$R['email'])->where('password',$R['password'])->get();
+        if(isset($user[0]['password'])){
+            return view('index',['user_id'=>$user[0]['id']]);
+        }else{
+            return view('register',['status'=>'login yoki parol notogri']);
+        }
     }
 
     /**

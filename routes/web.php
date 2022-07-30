@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UserController;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Resource_;
 
@@ -15,6 +18,7 @@ use phpDocumentor\Reflection\Types\Resource_;
 |
 */
 Route::get('/',function() {
-return view('index');
+return view('register');
 });
-Route::resource('message',Message::class);
+Route::resource('message',MessageController::class);
+Route::resource('user',UserController::class);
