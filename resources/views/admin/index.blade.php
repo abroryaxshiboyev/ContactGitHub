@@ -28,7 +28,7 @@
             <td>{{ $message->description }}</td>
             <td>{{ $message->name }}</td>
             <td>{{ $message->email }}</td>
-            <td>{{ $message->file }}</td>
+            <td><img src="{{ $message->file }}" alt="" style="width: 200px"></td>
             <td>{{ $message->status }}</td>
             <td>
                 <form action="{{ url('admins/'.$message->id ) }}" method="post">
