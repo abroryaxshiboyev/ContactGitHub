@@ -17,8 +17,10 @@ class CreateMessagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->foreignId('user_id')->constrained();
+            $table->string('name');
+            $table->string('email');
             $table->text('file');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
