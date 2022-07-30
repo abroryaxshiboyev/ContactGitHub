@@ -16,6 +16,8 @@
             <td>name</td>
             <td>email</td>
             <td>file</td>
+            <td>Status</td>
+            <td>Orinlandi</td>
             <td>delete</td>
         </tr>
 
@@ -24,9 +26,17 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $message->title }}</td>
             <td>{{ $message->description }}</td>
-            <td>{{ $message->user->name }}</td>
-            <td>{{ $message->user->email }}</td>
+            <td>{{ $message->name }}</td>
+            <td>{{ $message->email }}</td>
             <td>{{ $message->file }}</td>
+            <td>{{ $message->status }}</td>
+            <td>
+                <form action="{{ url('admins/'.$message->id ) }}" method="post">
+                    @csrf
+                    <input name="_method" type="hidden" value="PUT">
+                    <input type="submit" value="OK">
+                </form>
+            </td>
             <td>
                 <form action="{{ url('admins/'.$message->id ) }}" method="post">
                     @csrf

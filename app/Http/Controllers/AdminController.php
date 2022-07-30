@@ -71,7 +71,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Message::where('id', $id)->update(['status' => true]);
+
+        return redirect('admins');
     }
 
     /**
