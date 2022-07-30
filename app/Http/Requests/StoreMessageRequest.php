@@ -24,9 +24,10 @@ class StoreMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'=>'numeric',
             'title'=>'required',
             'description'=>'required',
+            'name'=>'required',
+            'email'=>'email',
             'file'=>'mimes:jpeg,jpg,png|required'
         ];
     }
